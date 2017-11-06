@@ -50,7 +50,7 @@ class ErrorHandlingSpec extends FunSpec with Matchers {
       thrown.column should equal (5)
     }
 
-    ignore("should report not saturated constructor application") {
+    it("should report not saturated constructor application") {
       val thrown = the[FiledTTLiteError] thrownBy { TTREPL.main(Array(s"$root/04_ctr.hs")) }
       thrown.file should equal (s"$root/04_ctr.hs")
       thrown.getMessage should startWith("incorrect constructor application")

@@ -22,6 +22,8 @@ trait NatMetaSyntax extends MetaSyntax with NatAST {
       Zero
     case MVar(Global("Succ")) @@ n =>
       Succ(translate(n))
+    case MVar(Global("Succ")) =>
+      throw TranslationError(m, s"incorrect constructor application")
     case MVar(Global("elim")) @@ MVar(Global("Nat")) @@ m @@ cZ @@ cS @@ n =>
       NatElim(translate(m), translate(cZ), translate(cS), translate(n))
     case _ => super.translate(m)
