@@ -204,3 +204,21 @@ eq_id =
             (\ (x : A) (y : A) (eq_x_y : Id A x y) -> Id A x y)
             (\ (x : A) -> Refl A x)
             eq_x_y;
+
+--
+--   ---------------------
+--     (\x -> f x) x = f x
+eta:
+    forall
+    (a : Set)
+    (b : Set)
+    (f : forall (_ : a) . b)
+    (x : a) .
+        Id b (f x) ((\ (y : a) -> f y) x);
+eta =
+    \
+    (a : Set)
+    (b : Set)
+    (f : forall (_ : a) . b)
+    (x : a) .
+        Refl b (f x);
